@@ -1,27 +1,22 @@
 class Usuario {
-  constructor(nombre, apellido, libros, mascotas) {
+  constructor(nombre, apellido) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.libros = [
-      {
-        name: name,
-        author: undefined,
-      },
-    ];
-    this.mascotas = [mascotas];
+    this.libros = [];
+    this.mascotas = [];
   }
   getFullName() {
     console.log(`El nombre completo es ${this.nombre} ${this.apellido}`);
   }
   addMascota(name) {
-    this.mascotas.push(name);
+    this.mascotas = [...this.mascotas, name];
     return console.log(this.mascotas);
   }
   countMascotas() {
     return console.log(this.mascotas.length);
   }
   addBook(name, author) {
-    this.libros.push({ name, author });
+    this.libros = [...this.libros, { name, author }];
     return console.log(this.libros);
   }
   getBookNames() {
@@ -30,19 +25,19 @@ class Usuario {
   }
 }
 
-const usuario1 = new Usuario(
-  'Juan',
-  'Taphanel',
-  [
-    {
-      name: 'Juego De Tronos',
-      author: 'George R.R',
-    },
-  ],
-  'Gato'
-);
+const usuario1 = new Usuario('Juan', 'Taphanel');
+//Nombre Completo
 usuario1.getFullName();
+//Agrego Mascotas
 usuario1.addMascota('perro');
+usuario1.addMascota('gato');
+usuario1.addMascota('loro');
+usuario1.addMascota('conejo');
+//Cuento Mascotas
 usuario1.countMascotas();
+//Agrego Libros
 usuario1.addBook('It', 'Stephen King');
+usuario1.addBook('Game of Thrones', 'George R.R');
+usuario1.addBook('Cien años de soledad', 'Gabriel Garcia Marquez');
+//Lista de nombres
 usuario1.getBookNames();
